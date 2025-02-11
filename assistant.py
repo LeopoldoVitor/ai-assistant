@@ -4,9 +4,7 @@ from langchain_core.messages import HumanMessage, AIMessage
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 
-st.set_page_config(page_title="Chatbot", page_icon="🕸")
-st.markdown("<h2 style='text-align: center; margin-top: 270px'>Como posso ajudar?</h3>", unsafe_allow_html=True)
-
+st.set_page_config(page_title="Chatbot - Vitor", page_icon="custom\selbettioficial_logo.jpg")
 
 def get_response(query, chat_history):    
     template = '''
@@ -29,6 +27,7 @@ def get_response(query, chat_history):
     )
 
 if "chat_history" not in st.session_state:
+    st.markdown("<h2 style='text-align: center; margin-top: 270px'>Como posso ajudar?</h3>", unsafe_allow_html=True)
     st.session_state.chat_history = []
 
 for message in st.session_state.chat_history:
@@ -39,7 +38,7 @@ for message in st.session_state.chat_history:
         with st.chat_message("AI"):
             st.markdown(message.content)
 
-if user_query := st.chat_input("Digite:"):
+if user_query := st.chat_input("Envie uma mensagem para o ChatBot"):
     with st.chat_message("Human"):
         st.markdown(user_query)
 
